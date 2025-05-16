@@ -29,6 +29,7 @@ stages:
       - src/cnnClassifier/pipeline/stage_3_training.py
       - src/cnnClassifier/components/prepare_callbacks.py
       - config/config.yaml
+      - params.yaml
       - artifacts/data_ingestion/Chicken-fecal-images
       - artifacts/prepare_base_model
     params:
@@ -44,6 +45,7 @@ stages:
     cmd: python src/cnnClassifier/pipeline/stage_4_evaluation.py
     deps:
       - src/cnnClassifier/pipeline/stage_4_evaluation.py
+      - src/cnnClassifier/components/evaluation.py
       - config/config.yaml
       - artifacts/data_ingestion/Chicken-fecal-images
       - artifacts/training/model.h5

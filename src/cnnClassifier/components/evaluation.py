@@ -9,7 +9,8 @@ class Evaluation:
         self.config = config
 
     def _valid_generator(self):
-        data_generator_kwargs = dict(rescale=1.0 / 255, validation_split=0.3)
+        # data_generator_kwargs = dict(rescale=1.0 / 255, validation_split=0.3)
+        data_generator_kwargs = dict(rescale=1.0 / 255)
 
         dataflow_kwargs = dict(
             target_size=self.config.params_image_size[:-1],
@@ -23,7 +24,8 @@ class Evaluation:
 
         self.valid_generator = valid_data_generator.flow_from_directory(
             directory=self.config.training_data,
-            subset="validation",
+            # subset="validation",
+            subset="training",
             shuffle=False,
             **dataflow_kwargs
         )
